@@ -85,13 +85,13 @@ nmap gB :bp<CR>
 inoremap jk <ESC>
 
 " Reload vim config
-nmap <Leader>R :w<CR> :so $MYVIMRC<CR>
+nmap <Leader>R :so $MYVIMRC<CR>
 
 " Reselect after indentation
 vnoremap < <gv
 vnoremap > >gv
 
-" Open terminal
+" Terminal
 nmap <Leader>t :terminal<CR>
 tnoremap jk <C-\><C-n>
 autocmd TermOpen term://* startinsert
@@ -146,17 +146,17 @@ endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " Deoplete
-let g:deoplete#enable_at_startup = 1
-"call deoplete#custom#option('sources', { '_': ['ale'] })
+" let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#option('sources', { '_': ['ale'] })
 
 " ALE
-let g:ale_set_signs = 0
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_delay = 0
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'typescript': ['prettier'],
-\   'css': ['prettier'],
-\   'graphql': ['prettier'],
-\}
+" let g:ale_set_signs = 0
+" let g:ale_lint_on_text_changed = 'normal'
+" let g:ale_lint_on_insert_leave = 1
+" let g:ale_lint_delay = 0
+" let g:ale_fixers = {
+" \   'javascript': ['prettier'],
+" \   'typescript': ['prettier'],
+" \   'css': ['prettier'],
+" \   'graphql': ['prettier'],
+" \}
