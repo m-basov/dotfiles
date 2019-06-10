@@ -70,6 +70,7 @@ nnoremap <C-H> <C-W><C-H>
 " Search
 set incsearch
 set ignorecase
+set smartcase
 
 nnoremap <ESC> :noh<CR><ESC>
 
