@@ -1,0 +1,5 @@
+{
+  "eslint.filetypes": ["javascript", "typescript"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "graphql"],
+  "diagnostic.enableSign": false
+}

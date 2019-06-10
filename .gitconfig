@@ -1,0 +1,57 @@
+[user]
+	name = Mykola Basov
+	email = git@mbasov.com
+	username = kolybasov
+	signingkey = 5752C362EA9CDBBD
+
+[push]
+	default = simple
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
+
+[github]
+	user = kolybasov
+
+[core]
+	excludesfile = /Users/mbasov/.gitignore
+	editor = "subl --wait"
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+[difftool "subl"]
+  cmd = "subl --wait $LOCAL"
+[diff]
+	tool = subl
+
+[mergetool "subl"]
+	cmd = subl --wait
+[merge]
+	tool = subl
+[alias]
+	pl = pull
+	p = push
+	st = status
+	co = checkout
+	cm = commit -am
+	a = add
+	br = checkout -b
+	m = merge
+	c = clone
+	d = diff
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
