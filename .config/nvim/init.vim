@@ -24,6 +24,7 @@ if dein#load_state('~/.cache/dein')
   " FZF
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('jremmen/vim-ripgrep')
 
   call dein#end()
   call dein#save_state()
