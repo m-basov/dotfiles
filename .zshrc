@@ -11,6 +11,11 @@ export PURE_PROMPT_SYMBOL=""
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 eval "$(direnv hook zsh)"
 
+export VOLTA_HOME="$HOME/.volta"
+[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -27,7 +32,11 @@ alias g=git
 alias gf="git flow"
 alias kl=kubectl
 alias cur="printf '\x1b[?25h'"
-alias beyrep-tunnel="ngrok start beyrep-api-server --log=stdout >/dev/null 2>&1 &"
-alias beyrep-db="mongo-express --url 'mongodb://127.0.0.1/migrated' >/dev/null 2>&1 &"
 alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 
+# source non-public stuff
+if [ -f ~/.non-public ]; then
+    source ~/.non-public
+else
+    print "~/.non-public not found."
+fi
