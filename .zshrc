@@ -32,8 +32,17 @@ compinit
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# homebrew
+export PATH="/usr/local/sbin:$PATH"
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+# source non-public stuff
+if [ -f ~/.non-public ]; then
+    source ~/.non-public
+else
+    print "~/.non-public not found."
 fi
 
 # aliases
@@ -44,11 +53,4 @@ alias gf="git flow"
 alias kl=kubectl
 alias cur="printf '\x1b[?25h'"
 alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
-
-# source non-public stuff
-if [ -f ~/.non-public ]; then
-    source ~/.non-public
-else
-    print "~/.non-public not found."
-fi
 
