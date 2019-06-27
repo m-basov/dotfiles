@@ -25,6 +25,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#add('jremmen/vim-ripgrep')
+  " Swift
+  call dein#add('keith/swift.vim')
 
   call dein#end()
   call dein#save_state()
@@ -80,6 +82,7 @@ set hidden " Keep unsaved buffer
 nmap <Leader>q :bd<CR>
 nmap gb :bn<CR>
 nmap gB :bp<CR>
+nnoremap <leader>, <C-^>
 
 " Exit from insert mode
 inoremap jk <ESC>
@@ -160,3 +163,23 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 " \   'css': ['prettier'],
 " \   'graphql': ['prettier'],
 " \}
+ 
+" COC
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Netrw
+let g:netrw_banner = 0
+nnoremap <leader>e :Explore<CR>

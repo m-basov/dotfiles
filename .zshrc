@@ -1,3 +1,5 @@
+export LANG=en_US.UTF-8
+
 # history
 export HISTFILE=~/.zhistory
 export HISTSIZE=10000
@@ -30,6 +32,7 @@ autoload -U compinit
 compinit
 
 # fzf
+export FZF_DEFAULT_COMMAND="rg --files --hidden --smart-case --glob '!.git/*'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # homebrew
