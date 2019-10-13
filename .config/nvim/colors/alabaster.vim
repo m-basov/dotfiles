@@ -80,6 +80,7 @@ call s:h("StatusLineNC", { "fg": "black", "bg": "light_grey" })
 call s:h("Pmenu"       , { "fg": "bright_black", "bg": "light_grey" })
 call s:h("PmenuSel"    , { "fg": "black", "bg": "white" })
 call s:h("VertSplit"   , { "fg": "light_grey", "bg": "white" })
+call s:h("SignColumn"  , { "fg": "black", "bg": "lighter_grey" })
 
 "----------------------
 " JavaScript/TypeScript
@@ -113,9 +114,13 @@ call s:h("fzf2", { "fg": "bright_white", "bg": "blue" })
 call s:h("fzf3", { "fg": "bright_white", "bg": "blue" })
 
 "----------------------
-" COC
+" ALE + TS
 "----------------------
-call s:h("CocErrorHighlight"  , { "fg": "red", "bg": "light_red" })
-call s:h("CocWarningHighlight", { "fg": "yellow", "bg": "light_yellow" })
-call s:h("CocInfoHightlight"  , { "fg": "blue", "bg": "selection" })
+call s:h("NeomakeErrorSign"  , { "fg": "red", "bg": "light_red" })
+call s:h("NeomakeWarningSign", { "fg": "yellow", "bg": "light_yellow" })
+call s:h("NeomakeInfoSign"   , { "fg": "blue", "bg": "selection" })
+call s:h("ALEErrorSign"      , { "fg": "red", "bg": "light_red" })
+call s:h("ALEError"          , { "fg": "red", "bg": "light_red" })
+call s:h("ALEWarningSign"    , { "fg": "yellow", "bg": "light_yellow" })
+call s:h("ALEWarning"        , { "fg": "yellow", "bg": "light_yellow" })
 

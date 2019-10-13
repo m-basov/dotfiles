@@ -1,36 +1,10 @@
 let g:mapleader = ","
+let g:my_nvim_dir = fnamemodify(expand('<sfile>'), ':p:h')
+let g:node_host_prog = '/Users/mbasov/.volta/tools/image/packages/neovim/4.5.0/bin/cli.js'
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/usr/local/bin/python2'
 
-"=================
-" Plugins
-"=================
-
-" Add the dein installation directory into runtimepath
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-
-  " Essentials
-  call dein#add('editorconfig/editorconfig-vim')
-  call dein#add('tpope/vim-commentary')
-  " Autocomplete
-  call dein#add('neoclide/coc.nvim', { 'build': './install.sh', 'rev': '*' })
-  " JavaScript/Typescript
-  call dein#add('HerringtonDarkholme/yats.vim')
-  call dein#add('othree/yajs.vim')
-  call dein#add('jparise/vim-graphql')
-  " FZF
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-  call dein#add('jremmen/vim-ripgrep')
-  " Swift
-  call dein#add('keith/swift.vim')
-
-  call dein#end()
-  call dein#save_state()
-endif
+execute 'silent source ' . expand(g:my_nvim_dir . '/dein.vim')
 
 "=================
 " Vim Settings 
@@ -40,10 +14,14 @@ endif
 set termguicolors
 colorscheme alabaster
 syntax enable
+set signcolumn=yes
+set noshowmode
+set noshowcmd
 
 " Essentials
 set guicursor=
 set updatetime=300
+set clipboard+=unnamed
 
 " Backups
 set nobackup
@@ -55,7 +33,7 @@ set sidescrolloff=5
 set display+=lastline
 
 " Identation
-set tabstop=2 
+set tabstop=8 
 set shiftwidth=2 
 set expandtab
 set nowrap
@@ -79,7 +57,8 @@ nnoremap <ESC> :noh<CR><ESC>
 " Buffers
 set hidden " Keep unsaved buffer
 
-nmap <Leader>q :bd<CR>
+nmap <Leader>q :BD<CR>
+nmap <Leader>Q :close<CR>
 nmap gb :bn<CR>
 nmap gB :bp<CR>
 nnoremap <leader>, <C-^>
@@ -97,19 +76,22 @@ vnoremap > >gv
 " Terminal
 nmap <Leader>t :terminal<CR>
 tnoremap jk <C-\><C-n>
-autocmd TermOpen term://* startinsert
+autocmd TermOpen * startinsert
 
 " Use TAB for completion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+      \ "\<TAB>"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
 " Get syntax under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -147,39 +129,73 @@ function! s:fzf_statusline()
   setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
 endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
-
-" Deoplete
-" let g:deoplete#enable_at_startup = 1
-" call deoplete#custom#option('sources', { '_': ['ale'] })
-
-" ALE
-" let g:ale_set_signs = 0
-" let g:ale_lint_on_text_changed = 'normal'
-" let g:ale_lint_on_insert_leave = 1
-" let g:ale_lint_delay = 0
-" let g:ale_fixers = {
-" \   'javascript': ['prettier'],
-" \   'typescript': ['prettier'],
-" \   'css': ['prettier'],
-" \   'graphql': ['prettier'],
-" \}
  
-" COC
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" typescript-neovim
+nmap <silent> td :TSDef<CR>
+nmap <silent> tr :TSRefs<CR>
+  nmap <leader> rn :TSRename<CR>
+nmap <silent> K :TSType<CR>
+let g:nvim_typescript#default_mappings = 0
+let g:nvim_typescript#suggestions_enabled = 1
+let g:nvim_typescript#default_signs = [
+  \  {
+  \  'TSerror': {
+  \   'texthl': 'ALEErrorSign',
+  \   'signText': '×',
+  \   'signTexthl': 'ALEErrorSign'
+  \  }
+  \},
+  \{
+  \  'TSwarning': {
+  \   'texthl': 'ALEWarningSign',
+  \   'signText': '!',
+  \   'signTexthl': 'ALEWarningSign'
+  \  }
+  \},
+  \{
+  \  'TSinformation': {
+  \   'texthl': 'NeomakeInfoSign',
+  \   'signText': '•',
+  \   'signTexthl': 'NeomakeInfoSign'
+  \   }
+  \},
+  \{
+  \  'TShint': {
+  \   'texthl': 'NeomakeInfoSign',
+  \   'signText': '?',
+  \   'signTexthl': 'NeomakeInfoSign'
+  \   }
+  \}
+  \]
 
 " Netrw
 let g:netrw_banner = 0
 nnoremap <leader>e :Explore<CR>
+
+" Context ft
+au BufRead,BufNewFile *.mjml setfiletype html
+if !exists('g:context_filetype#same_filetypes')
+    let g:context_filetype#filetypes = {}
+endif
+let g:context_filetype#filetypes.typescript = [
+  \ {'filetype': 'sql', 'start': 'sql`', 'end': '`'},
+  \ ]
+let g:context_filetype#filetypes.svelte = [
+  \ {'filetype': 'javascript', 'start': '<script>', 'end': '</script>'},
+  \ {'filetype': 'css', 'start': '<style>', 'end': '</style>'},
+  \ ]
+let g:context_filetype#filetypes.html = [
+  \ {'filetype': 'css', 'start': '<mj-style.*>', 'end': '</mj-style>'},
+  \ ]
+
+" Prettier
+let g:prettier#autoformat = 1
+nmap <silent> <S-CR> <Plug>(Prettier)
+
+" Airline
+" let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline_theme = 'alabaster'

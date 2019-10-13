@@ -61,7 +61,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: SimpleFullscreen
+  startup_mode: Maximized
 
   # Window title
   #title: Alacritty
@@ -109,7 +109,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: "Fira Code"
+    family: "Menlo"
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -120,7 +120,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: "Fira Code"
+    family: "Menlo"
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -220,7 +220,7 @@ colors:
     black:   '0x777777'
     red:     '0xF05050'
     green:   '0x60CB00'
-    yellow:  '0xFFBC5D'
+    yellow:  '0xCB9000'
     blue:    '0x007ACC'
     magenta: '0xE64CE6'
     cyan:    '0x00AACB'
@@ -638,3 +638,6 @@ key_bindings:
   - { key: F11,      mods: Super,   chars: "\x1b[23;3~"                      }
   - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                      }
   - { key: NumpadEnter,             chars: "\n"                              }
+  - { key: Return,   mods: Shift,   chars: "\x1b[13;2u"                      }
+  - { key: Return,   mods: Control, chars: "\x1b[13;5u"                      }
+

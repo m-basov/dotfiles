@@ -18,18 +18,15 @@
 
 [core]
 	excludesfile = /Users/mbasov/.gitignore
-	editor = "subl --wait"
+	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
-[difftool "subl"]
-  cmd = "subl --wait $LOCAL"
 [diff]
-	tool = subl
+	tool = vimdiff
 
-[mergetool "subl"]
-	cmd = subl --wait
 [merge]
-	tool = subl
+	tool = vim
+
 [alias]
 	pl = pull
 	p = push
@@ -41,13 +38,16 @@
 	m = merge
 	c = clone
 	d = diff
+
 [color]
 	ui = true
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+
 [color "diff"]
 	meta = yellow
 	frag = magenta bold
