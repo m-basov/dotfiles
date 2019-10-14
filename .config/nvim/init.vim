@@ -143,6 +143,8 @@ nmap td         <Plug>(ale_go_to_type_definition)
 nmap tr         <Plug>(ale_find_references)
 nmap <leader>rn <Plug>(ale_rename)
 nmap K          <Plug>(ale_hover)
+nmap ne         <Plug>(ale_next_wrap)
+nmap pe         <Plug>(ale_previous_wrap)
 
 " Syntax
 autocmd BufNewFile,BufRead *.mjml set filetype=html
