@@ -7,14 +7,13 @@ let g:python_host_prog = '/usr/local/bin/python2'
 execute 'silent source ' . expand(g:my_nvim_dir . '/dein.vim')
 
 "=================
-" Vim Settings 
+" Vim Settings
 "=================
 
 " Color Scheme
 set termguicolors
 colorscheme alabaster
 syntax enable
-set signcolumn=yes
 set noshowmode
 set noshowcmd
 
@@ -22,6 +21,7 @@ set noshowcmd
 set guicursor=
 set updatetime=300
 set clipboard+=unnamed
+set ttimeoutlen=10
 
 " Backups
 set nobackup
@@ -33,13 +33,13 @@ set sidescrolloff=5
 set display+=lastline
 
 " Identation
-set tabstop=8 
-set shiftwidth=2 
+set tabstop=8
+set shiftwidth=2
 set expandtab
 set nowrap
 
 " Splits
-set splitbelow 
+set splitbelow
 set splitright
 
 nnoremap <C-J> <C-W><C-J>
@@ -79,19 +79,8 @@ tnoremap jk <C-\><C-n>
 autocmd TermOpen * startinsert
 
 " Use TAB for completion
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ "\<TAB>"
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
+inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
 
 " Get syntax under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -99,7 +88,7 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 "=================
-" Plugins Settings 
+" Plugins Settings
 "=================
 
 " Dein
@@ -110,7 +99,7 @@ nmap <Leader>p :Files<CR>
 nmap <Leader>h :History<CR>
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>l :BLines<CR>
-let g:fzf_colors =  { 
+let g:fzf_colors =  {
   \ 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
   \ 'hl':      ['bg', 'fzf1'],
@@ -129,73 +118,31 @@ function! s:fzf_statusline()
   setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
 endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
- 
+
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-
-" typescript-neovim
-nmap <silent> td :TSDef<CR>
-nmap <silent> tr :TSRefs<CR>
-  nmap <leader> rn :TSRename<CR>
-nmap <silent> K :TSType<CR>
-let g:nvim_typescript#default_mappings = 0
-let g:nvim_typescript#suggestions_enabled = 1
-let g:nvim_typescript#default_signs = [
-  \  {
-  \  'TSerror': {
-  \   'texthl': 'ALEErrorSign',
-  \   'signText': '×',
-  \   'signTexthl': 'ALEErrorSign'
-  \  }
-  \},
-  \{
-  \  'TSwarning': {
-  \   'texthl': 'ALEWarningSign',
-  \   'signText': '!',
-  \   'signTexthl': 'ALEWarningSign'
-  \  }
-  \},
-  \{
-  \  'TSinformation': {
-  \   'texthl': 'NeomakeInfoSign',
-  \   'signText': '•',
-  \   'signTexthl': 'NeomakeInfoSign'
-  \   }
-  \},
-  \{
-  \  'TShint': {
-  \   'texthl': 'NeomakeInfoSign',
-  \   'signText': '?',
-  \   'signTexthl': 'NeomakeInfoSign'
-  \   }
-  \}
-  \]
 
 " Netrw
 let g:netrw_banner = 0
 nnoremap <leader>e :Explore<CR>
 
-" Context ft
-au BufRead,BufNewFile *.mjml setfiletype html
-if !exists('g:context_filetype#same_filetypes')
-    let g:context_filetype#filetypes = {}
-endif
-let g:context_filetype#filetypes.typescript = [
-  \ {'filetype': 'sql', 'start': 'sql`', 'end': '`'},
-  \ ]
-let g:context_filetype#filetypes.svelte = [
-  \ {'filetype': 'javascript', 'start': '<script>', 'end': '</script>'},
-  \ {'filetype': 'css', 'start': '<style>', 'end': '</style>'},
-  \ ]
-let g:context_filetype#filetypes.html = [
-  \ {'filetype': 'css', 'start': '<mj-style.*>', 'end': '</mj-style>'},
-  \ ]
-
-" Prettier
-let g:prettier#autoformat = 1
-nmap <silent> <S-CR> <Plug>(Prettier)
-
 " Airline
-" let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline_theme = 'alabaster'
+
+" ALE
+let g:ale_set_signs = 0
+let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'javascript': ['prettier', 'eslint'],
+  \ 'typescript': ['prettier', 'eslint']
+  \ }
+nmap <S-CR>     <Plug>(ale_fix)
+nmap gd         <Plug>(ale_go_to_definition_in_vsplit)
+nmap td         <Plug>(ale_go_to_type_definition)
+nmap tr         <Plug>(ale_find_references)
+nmap <leader>rn <Plug>(ale_rename)
+nmap K          <Plug>(ale_hover)
+
+" Syntax
+autocmd BufNewFile,BufRead *.mjml set filetype=html

@@ -114,13 +114,31 @@ call s:h("fzf2", { "fg": "bright_white", "bg": "blue" })
 call s:h("fzf3", { "fg": "bright_white", "bg": "blue" })
 
 "----------------------
-" ALE + TS
+" ALE
 "----------------------
-call s:h("NeomakeErrorSign"  , { "fg": "red", "bg": "light_red" })
-call s:h("NeomakeWarningSign", { "fg": "yellow", "bg": "light_yellow" })
-call s:h("NeomakeInfoSign"   , { "fg": "blue", "bg": "selection" })
 call s:h("ALEErrorSign"      , { "fg": "red", "bg": "light_red" })
 call s:h("ALEError"          , { "fg": "red", "bg": "light_red" })
 call s:h("ALEWarningSign"    , { "fg": "yellow", "bg": "light_yellow" })
 call s:h("ALEWarning"        , { "fg": "yellow", "bg": "light_yellow" })
+
+
+"----------------------
+" Terminal
+"----------------------
+let g:terminal_color_0  = s:alabaster_colors.black.gui
+let g:terminal_color_1  = s:alabaster_colors.red.gui
+let g:terminal_color_2  = s:alabaster_colors.green.gui
+let g:terminal_color_3  = s:alabaster_colors.yellow.gui
+let g:terminal_color_4  = s:alabaster_colors.blue.gui
+let g:terminal_color_5  = s:alabaster_colors.magenta.gui
+let g:terminal_color_6  = s:alabaster_colors.cyan.gui
+let g:terminal_color_7  = s:alabaster_colors.white.gui
+let g:terminal_color_8  = s:alabaster_colors.bright_black.gui
+let g:terminal_color_9  = s:alabaster_colors.bright_red.gui
+let g:terminal_color_10 = s:alabaster_colors.bright_green.gui
+let g:terminal_color_11 = s:alabaster_colors.bright_yellow.gui
+let g:terminal_color_12 = s:alabaster_colors.bright_blue.gui
+let g:terminal_color_13 = s:alabaster_colors.bright_magenta.gui
+let g:terminal_color_14 = s:alabaster_colors.bright_cyan.gui
+let g:terminal_color_15 = s:alabaster_colors.bright_white.gui
 
