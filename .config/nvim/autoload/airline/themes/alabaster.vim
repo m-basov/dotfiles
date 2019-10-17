@@ -69,6 +69,8 @@ let s:t_mode = [
   \ s:colors.green.cterm16
   \ ]
 let g:airline#themes#alabaster#palette.terminal = airline#themes#generate_color_map(s:t_mode, s:n_file_info, s:n_file_path)
+let g:airline#themes#alabaster#palette.terminal.airline_term = s:n_file_path
+let g:airline#themes#alabaster#palette.normal.airline_term = s:n_file_path
 let g:airline#themes#alabaster#palette.terminal.airline_warning = s:warn
 let g:airline#themes#alabaster#palette.terminal.airline_error = s:error
 let g:airline#themes#alabaster#palette.terminal_modified = g:airline#themes#alabaster#palette.terminal
@@ -78,4 +80,9 @@ let g:airline#themes#alabaster#palette.inactive = airline#themes#generate_color_
 let g:airline#themes#alabaster#palette.inactive.airline_warning = s:warn
 let g:airline#themes#alabaster#palette.inactive.airline_error = s:error
 let g:airline#themes#alabaster#palette.inactive_modified = g:airline#themes#alabaster#palette.inactive
+
+" Tabline
+let g:airline#themes#alabaster#palette.tabline = {}
+let g:airline#themes#alabaster#palette.tabline.airline_tabmod = s:n_mode
+let g:airline#themes#alabaster#palette.tabline.airline_tabmod_unsel = s:r_mode
 

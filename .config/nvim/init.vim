@@ -47,6 +47,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Tabs
+nnoremap TN :tabnext<CR>
+nnoremap TP :tabprev<CR>
+
 " Search
 set incsearch
 set ignorecase
@@ -74,9 +78,16 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Terminal
-nmap <Leader>t :terminal<CR>
+nmap <Leader>t :call StartTerminal()<CR>
 tnoremap jk <C-\><C-n>
 autocmd TermOpen * startinsert
+
+function! StartTerminal()
+  let name = input("Enter terminal buffername: ")
+  execute("enew")
+  execute("terminal")
+  execute("file" . " " . name)
+endfunction
 
 " Use TAB for completion
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -95,6 +106,7 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 nmap <Leader>cp :call map(dein#check_clean(), "delete(v:val, 'rf')")<CR> :call dein#recache_runtimepath()<CR>
 
 " FZF
+let g:fzf_nvim_statusline = 0
 nmap <Leader>p :Files<CR>
 nmap <Leader>h :History<CR>
 nmap <Leader>b :Buffers<CR>
@@ -129,13 +141,16 @@ nnoremap <leader>e :Explore<CR>
 " Airline
 let g:airline#extensions#ale#enabled = 1
 let g:airline_theme = 'alabaster'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " ALE
 let g:ale_set_signs = 0
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'javascript': ['prettier', 'eslint'],
-  \ 'typescript': ['prettier', 'eslint']
+  \ 'typescript': ['prettier', 'eslint'],
+  \ 'graphql': ['prettier']
   \ }
 nmap <S-CR>     <Plug>(ale_fix)
 nmap gd         <Plug>(ale_go_to_definition_in_vsplit)
@@ -143,8 +158,8 @@ nmap td         <Plug>(ale_go_to_type_definition)
 nmap tr         <Plug>(ale_find_references)
 nmap <leader>rn <Plug>(ale_rename)
 nmap K          <Plug>(ale_hover)
-nmap ne         <Plug>(ale_next_wrap)
-nmap pe         <Plug>(ale_previous_wrap)
+nmap <leader>n  <Plug>(ale_next_wrap)
+nmap <leader>N  <Plug>(ale_previous_wrap)
 
 " Syntax
 autocmd BufNewFile,BufRead *.mjml set filetype=html
