@@ -67,9 +67,6 @@ nmap gb :bn<CR>
 nmap gB :bp<CR>
 nnoremap <leader>, <C-^>
 
-" Exit from insert mode
-inoremap jk <ESC>
-
 " Reload vim config
 nmap <Leader>R :so $MYVIMRC<CR>
 
@@ -79,14 +76,15 @@ vnoremap > >gv
 
 " Terminal
 nmap <Leader>t :call StartTerminal()<CR>
-tnoremap jk <C-\><C-n>
-autocmd TermOpen * startinsert
+tnoremap JK <C-\><C-n>
 
-function! StartTerminal()
-  let name = input("Enter terminal buffername: ")
-  execute("enew")
-  execute("terminal")
-  execute("file" . " " . name)
+function! StartTerminal() abort
+  let l:name = input("Enter terminal buffername: ")
+  if l:name == "" | let l:name = "zsh" | endif
+  enew
+  terminal
+  execute("file" . " " . l:name)
+  startinsert
 endfunction
 
 " Use TAB for completion
@@ -94,23 +92,31 @@ inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Get syntax under cursor
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+map <F10> :call GetSyntaxIdentifier()<CR>
+function GetSyntaxIdentifier()
+  echo 
+  \   "hi<"    . synIDattr(synID(line("."), col("."), 1), "name")              . "> "
+  \ . "trans<" . synIDattr(synID(line("."), col("."), 0), "name")              . "> "
+  \ . "lo<"    . synIDattr(synIDtrans(synID(line("."), col("."), 1)), "name") . ">"
+endfunction
 
 "=================
 " Plugins Settings
 "=================
 
 " Dein
-nmap <Leader>cp :call map(dein#check_clean(), "delete(v:val, 'rf')")<CR> :call dein#recache_runtimepath()<CR>
+nmap <Leader>cp :call CleanDeinPlugins()<CR>
+function CleanDeinPlugins() abort
+  call map(dein#check_clean(), "delete(v:val, 'rf')")
+  call dein#recache_runtimepath()
+  UpdateRemotePlugins
+endfunction
 
 " FZF
 let g:fzf_nvim_statusline = 0
-nmap <Leader>p :Files<CR>
-nmap <Leader>h :History<CR>
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>l :BLines<CR>
+nmap <leader>p  :Files<CR>
+nmap <leader>/  :BLines<CR>
+nmap <leader>f  :Rg<CR>
 let g:fzf_colors =  {
   \ 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -126,17 +132,16 @@ let g:fzf_colors =  {
   \ 'spinner': ['bg', 'fzf1'],
   \ 'header':  ['fg', 'Normal'],
   \ }
-function! s:fzf_statusline()
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " Deoplete
+set completeopt=menu
 let g:deoplete#enable_at_startup = 1
 
-" Netrw
-let g:netrw_banner = 0
-nnoremap <leader>e :Explore<CR>
+" nnn 
+let g:nnn#set_default_mappings = 0
+let g:nnn#layout = { 'left': '~40%' }
+let g:nnn#statusline = 1
+nnoremap <leader>e :NnnPicker '%:p:h'<CR>
 
 " Airline
 let g:airline#extensions#ale#enabled = 1
@@ -146,11 +151,23 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " ALE
 let g:ale_set_signs = 0
+let g:ale_close_preview_on_insert = 1
+let g:ale_echo_cursor = 1
+let g:ale_linters = {
+  \ 'rust': ['rls']
+  \ }
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \ 'javascript': ['prettier', 'eslint'],
-  \ 'typescript': ['prettier', 'eslint'],
-  \ 'graphql': ['prettier']
+  \ 'javascript': ['prettier'],
+  \ 'typescript': ['prettier'],
+  \ 'typescript.tsx': ['prettier'],
+  \ 'typescriptreact': ['prettier'],
+  \ 'json': ['prettier'],
+  \ 'graphql': ['prettier'],
+  \ 'css': ['prettier'],
+  \ 'html': ['prettier'],
+  \ 'less': ['prettier'],
+  \ 'rust': ['rustfmt']
   \ }
 nmap <S-CR>     <Plug>(ale_fix)
 nmap gd         <Plug>(ale_go_to_definition_in_vsplit)
@@ -160,6 +177,25 @@ nmap <leader>rn <Plug>(ale_rename)
 nmap K          <Plug>(ale_hover)
 nmap <leader>n  <Plug>(ale_next_wrap)
 nmap <leader>N  <Plug>(ale_previous_wrap)
+" ale-rust
+let g:ale_rust_cargo_use_clippy = 1
 
 " Syntax
-autocmd BufNewFile,BufRead *.mjml set filetype=html
+augroup init_syntaxes
+  au!
+  au BufNewFile,BufRead *.mjml set filetype=html
+augroup END
+
+if !exists('g:context_filetype#filetypes')
+  let g:context_filetype#filetypes = {}
+endif
+let g:context_filetype#filetypes.typescript = [
+  \ {'filetype': 'sql', 'start' : 'sql\`', 'end' : '\`'},
+  \ {'filetype': 'html', 'start': 'html\`', 'end': '\`'},
+  \ {'filetype': 'css', 'start': 'css\`', 'end': '\`'}
+  \ ]
+if !exists('g:context_filetype#same_filetypes')
+  let g:context_filetype#same_filetypes = {}
+endif
+let g:context_filetype#same_filetypes.typescript = 'javascript,typescript.tsx,typescriptreact'
+

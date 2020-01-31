@@ -23,23 +23,20 @@ if dein#load_state(expand(s:dein_dir))
 
     " Essentials
     call dein#add('editorconfig/editorconfig-vim')
-    call dein#add('tpope/vim-commentary')
     call dein#add('qpkorr/vim-bufkill')
     call dein#add('wsdjeg/dein-ui.vim')
     call dein#add('tpope/vim-eunuch')
     call dein#add('vim-airline/vim-airline')
-    " Autocomplete
+    call dein#add('tpope/vim-commentary')
+    call dein#add('tommcdo/vim-lion')
+    call dein#add('Shougo/context_filetype.vim')
     call dein#add('Shougo/deoplete.nvim')
-    " call dein#add('Shougo/denite.nvim')
     call dein#add('dense-analysis/ale')
-    " JavaScript/Typescript
-    call dein#add('othree/yajs.vim')
-    call dein#add('HerringtonDarkholme/yats.vim')
-    call dein#add('jparise/vim-graphql')
-    " FZF
+    call dein#add('sheerun/vim-polyglot')
     call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
     call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-    call dein#add('jremmen/vim-ripgrep')
+    call dein#add('tpope/vim-fugitive')
+    call dein#add('mcchrish/nnn.vim')
 
     " End of plugin initialization.
     call dein#end()

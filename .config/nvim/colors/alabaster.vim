@@ -17,7 +17,7 @@ let s:alabaster_colors = {
   \ "magenta"       : { "gui": "#7A3E9D", "cterm16": 5      },
   \ "cyan"          : { "gui": "#0083B2", "cterm16": 6      },
   \ "white"         : { "gui": "#BBBBBB", "cterm16": 7      },
-  \ 
+  \
   \ "bright_black"  : { "gui": "#777777", "cterm16": 8      },
   \ "bright_red"    : { "gui": "#F05050", "cterm16": 9      },
   \ "bright_green"  : { "gui": "#60CB00", "cterm16": 10     },
@@ -56,9 +56,14 @@ function! s:h(group, style)
 endfunction
 
 "-----------
-" Vim Colors 
+" Vim Colors
 "-----------
 call s:h("Normal"      , { "fg": "black", "bg": "lighter_grey" })
+call s:h("Definition"  , { "fg": "blue" })
+call s:h("Comment"     , { "fg": "red" })
+call s:h("String"      , { "fg": "green" })
+call s:h("Constant"    , { "fg": "magenta" })
+call s:h("Escape"      , { "fg": "bright_black" })
 call s:h("Cursor"      , { "fg": "bright_white", "bg": "active" })
 call s:h("CursorLine"  , { "bg": "light_grey" })
 call s:h("StatusLine"  , { "fg": "bright_white", "bg": "blue" })
@@ -66,61 +71,100 @@ call s:h("MatchParen"  , { "fg": "active", "gui": "underline" })
 call s:h("Visual"      , { "bg": "selection" })
 call s:h("Search"      , { "fg": "black", "bg": "bright_yellow" })
 call s:h("IncSearch"   , { "fg": "black", "bg": "bright_yellow" })
-call s:h("Comment"     , { "fg": "red" })
-call s:h("String"      , { "fg": "green" })
-call s:h("Constant"    , { "fg": "magenta" })
-call s:h("Special"     , { "fg": "black" })
 call s:h("Error"       , { "fg": "red", "bg": "light_red" })
-call s:h("ErrorMsg"    , { "fg": "red", "bg": "light_red" })
-call s:h("Statement"   , { "fg": "black" })
-call s:h("Identifier"  , { "fg": "black" })
-call s:h("PreProc"     , { "fg": "black" })
-call s:h("Type"        , { "fg": "black" })
-call s:h("StatusLineNC", { "fg": "black", "bg": "light_grey" })
+call s:h("Warning"     , { "fg": "yellow", "bg": "light_yellow" })
 call s:h("Pmenu"       , { "fg": "bright_black", "bg": "light_grey" })
 call s:h("PmenuSel"    , { "fg": "black", "bg": "white" })
 call s:h("VertSplit"   , { "fg": "light_grey", "bg": "white" })
+call s:h("StatusLineNC", { "fg": "black", "bg": "light_grey" })
 call s:h("SignColumn"  , { "fg": "black", "bg": "lighter_grey" })
+call s:h("Todo"        , { "fg": "black", "bg": "bright_yellow" })
+call s:h("Underlined"  , { "fg": "blue", "gui": "underline" })
+
+hi! def link ErrorMsg Error
+hi! def link WarningMsg Warning
+hi! def link NvimInternalError Error
+hi! def link Statement Normal
+hi! def link Identifier Normal
+hi! def link PreProc Normal
+hi! def link Type Normal
+hi! def link Special Normal
+hi! def link TermCursor Cursor
+hi! def link Title Definition
 
 "----------------------
-" JavaScript/TypeScript
+" JavaScript/TypeScript/CSS/GraphQL
 "----------------------
-call s:h("javascriptNumber"          , { "fg": "magenta" })
-call s:h("javascriptClassName"       , { "fg": "blue" })
-call s:h("javascriptIdentifierName"  , { "fg": "blue" })
-call s:h("typescriptTypeReference"   , { "fg": "blue" })
-call s:h("typescriptBlock"           , { "fg": "blue" })
-call s:h("typescriptAliasDeclaration", { "fg": "blue" })
-call s:h("typescriptSpecial"         , { "fg": "bright_black" })
-call s:h("typescriptInterfaceName"   , { "fg": "blue" })
-call s:h("typescriptClassName"       , { "fg": "blue" })
-call s:h("graphqlName"               , { "fg": "blue" })
-call s:h("graphqlType"               , { "fg": "magenta" })
-call s:h("tsxIntrinsicTagName"       , { "fg": "blue" })
-call s:h("tsxTagName"                , { "fg": "blue" })
+hi! def link graphqlType Definition
+
+hi! def link javascriptNumber Constant
+hi! def link javascriptClassName Definition
+hi! def link javascriptIdentifierName Definition
+hi! def link jsGlobalNodeObjects Normal
+
+hi! def link typescriptTypeReference Definition
+hi! def link typescriptAliasDeclaration Definition
+hi! def link typescriptInterfaceName Definition
+hi! def link typescriptClassName Definition
+hi! def link typescriptTypeParameter Definition
+hi! def link typescriptSpecial Escape
+hi! def link typescriptPredefinedType Definition
+hi! def link typescriptFuncName Definition
+
+hi! def link jsxComponentName Definition
+hi! def link jsxOpenPunct Escape
+hi! def link jsxClosePunct Escape
+hi! def link jsxCloseString Escape
+
+hi! def link cssClassName Definition
+hi! def link cssClassNameDot Definition
+hi! def link lessClass Definition
+hi! def link cssTagName Definition
+hi! def link cssBraces Escape
+hi! def link lessNestedSelector Definition
+hi! def link cssTextAttr Normal
+hi! def link cssUIAttr Normal
+hi! def link cssPositioningAttr Normal
+hi! def link cssFlexibleBoxAttr Normal
+
+"----------------------
+" Rust
+"----------------------
+hi! def link rustFuncName Definition
+hi! def link rustIdentifier Definition
+hi! def link rustType Definition
+hi! def link rustEnumVariant Definition
+hi! def link rustMacro Definition
+hi! def link rustFoldBraces Escape
+hi! def link rustEscape Escape
+hi! def link rustAttribute Escape
+hi! def link rustDerive Escape
+hi! def link rustDeriveTrait Escape
+hi! def link rustCharacter String
+hi! def link rustCommentLineDoc Comment
+hi! def link rustSelf Normal
 
 "----------------------
 " VimL
 "----------------------
-call s:h("vimFunction", { "fg": "blue" })
-call s:h("vimCommand" , { "fg": "blue" })
-call s:h("vimLet"     , { "fg": "black" })
+hi! def link vimLet Normal
+hi! def link vimFunction Definition
+hi! def link vimCommand Definition
 
 "----------------------
 " FZF
 "----------------------
-call s:h("fzf1", { "fg": "bright_white", "bg": "blue" })
-call s:h("fzf2", { "fg": "bright_white", "bg": "blue" })
-call s:h("fzf3", { "fg": "bright_white", "bg": "blue" })
+hi! def link fzf1 StatusLine
+hi! def link fzf2 StatusLine
+hi! def link fzf3 StatusLine
 
 "----------------------
 " ALE
 "----------------------
-call s:h("ALEErrorSign"      , { "fg": "red", "bg": "light_red" })
-call s:h("ALEError"          , { "fg": "red", "bg": "light_red" })
-call s:h("ALEWarningSign"    , { "fg": "yellow", "bg": "light_yellow" })
-call s:h("ALEWarning"        , { "fg": "yellow", "bg": "light_yellow" })
-
+hi! def link ALEWarningSign Warning
+hi! def link ALEWarning Warning
+hi! def link ALEErrorSign Error
+hi! def link ALEError Error
 
 "----------------------
 " Terminal
@@ -141,4 +185,3 @@ let g:terminal_color_12 = s:alabaster_colors.bright_blue.gui
 let g:terminal_color_13 = s:alabaster_colors.bright_magenta.gui
 let g:terminal_color_14 = s:alabaster_colors.bright_cyan.gui
 let g:terminal_color_15 = s:alabaster_colors.bright_white.gui
-
