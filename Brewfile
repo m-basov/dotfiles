@@ -1,9 +1,10 @@
 # Taps
-tap "go-gitea/gitea"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
-tap "mongodb/brew"
+tap "homebrew/cask-versions"
+tap "homebrew/cask-drivers"
+tap "go-gitea/gitea"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "stripe/stripe-cli"
@@ -94,7 +95,6 @@ brew "wget"
 brew "zlib"
 brew "zsh"
 brew "go-gitea/gitea/gitea"
-brew "mongodb/brew/mongodb-community"
 brew "osx-cross/arm/arm-gcc-bin@8", link: true
 brew "osx-cross/avr/avr-gcc@8", link: true
 brew "stripe/stripe-cli/stripe"
