@@ -134,6 +134,11 @@ cask "gfxcardstatus"
 cask "alfred"
 cask "homebrew/cask-drivers/steelseries-engine"
 cask "docker"
+cask "keyboardcleantool"
+cask "deepl"
+cask "caffeine"
+cask "android-file-transfer"
+cask "skype"
 
 # Mac AppStore
 mas "Things", id: 904280696
