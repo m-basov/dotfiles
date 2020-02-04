@@ -105,7 +105,6 @@ brew "mas"
 cask "osxfuse"
 cask "alacritty"
 cask "dbeaver-community"
-cask "font-iosevka"
 cask "iina"
 cask "java"
 cask "java8"
@@ -142,6 +141,8 @@ cask "skype"
 cask "vimr"
 cask "apenngrace/vulkan/vulkan-sdk"
 cask "kitty"
+cask "font-cascadia"
+cask "font-cascadia-mono"
 
 # Mac AppStore
 mas "Things", id: 904280696
