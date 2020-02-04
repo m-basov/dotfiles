@@ -68,13 +68,13 @@ brew "mitmproxy"
 brew "mosh"
 brew "neovim"
 brew "netcat"
-brew "nginx", restart_service: true
+brew "nginx", restart_service: :changed
 brew "nnn"
 brew "pgcli"
-brew "postgresql", restart_service: true
+brew "postgresql", restart_service: :changed
 brew "postgis"
 brew "python@2"
-brew "redis", restart_service: true
+brew "redis", restart_service: :changed
 brew "rename"
 brew "rfc"
 brew "ripgrep"
@@ -139,6 +139,9 @@ cask "deepl"
 cask "caffeine"
 cask "android-file-transfer"
 cask "skype"
+cask "vimr"
+cask "apenngrace/vulkan/vulkan-sdk"
+cask "kitty"
 
 # Mac AppStore
 mas "Things", id: 904280696
