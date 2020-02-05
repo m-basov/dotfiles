@@ -167,7 +167,8 @@ let g:ale_fixers = {
   \ 'css': ['prettier'],
   \ 'html': ['prettier'],
   \ 'less': ['prettier'],
-  \ 'rust': ['rustfmt']
+  \ 'rust': ['rustfmt'],
+  \ 'c': ['clang-format']
   \ }
 nmap <S-CR>     <Plug>(ale_fix)
 nmap gd         <Plug>(ale_go_to_definition_in_vsplit)

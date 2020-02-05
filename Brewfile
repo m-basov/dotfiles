@@ -35,7 +35,6 @@ brew "dfu-programmer"
 brew "dfu-util"
 brew "direnv"
 brew "duti"
-brew "elm", link: false
 brew "go"
 brew "exa"
 brew "exiftool"
@@ -100,6 +99,7 @@ brew "osx-cross/avr/avr-gcc@8", link: true
 brew "stripe/stripe-cli/stripe"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "mas"
+brew "gcc"
 
 # Casks
 cask "osxfuse"
