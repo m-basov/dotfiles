@@ -74,19 +74,6 @@ nmap <Leader>R :so $MYVIMRC<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Terminal
-nmap <Leader>t :call StartTerminal()<CR>
-tnoremap JK <C-\><C-n>
-
-function! StartTerminal() abort
-  let l:name = input("Enter terminal buffername: ")
-  if l:name == "" | let l:name = "zsh" | endif
-  enew
-  terminal
-  execute("file" . " " . l:name)
-  startinsert
-endfunction
-
 " Use TAB for completion
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -168,7 +155,9 @@ let g:ale_fixers = {
   \ 'html': ['prettier'],
   \ 'less': ['prettier'],
   \ 'rust': ['rustfmt'],
-  \ 'c': ['clang-format']
+  \ 'c': ['clang-format'],
+  \ 'cpp': ['clang-format'],
+  \ 'ruby': ['sorbet']
   \ }
 nmap <S-CR>     <Plug>(ale_fix)
 nmap gd         <Plug>(ale_go_to_definition_in_vsplit)
