@@ -22,6 +22,7 @@ bindkey "^[[B" history-beginning-search-forward-end
 eval "$(direnv hook zsh)"
 
 # prompt
+fpath+=$HOME/.zsh/pure
 export PURE_PROMPT_SYMBOL=""
 autoload -U promptinit; promptinit
 prompt pure
@@ -50,7 +51,7 @@ alias g=git
 alias gf="git flow"
 alias kl=kubectl
 alias cur="printf '\x1b[?25h'"
-alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # BAT
 export BAT_THEME=OneHalfLight
@@ -64,5 +65,5 @@ compinit
 # export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # volta
-export VOLTA_HOME="/Users/mbasov/.volta"
+export VOLTA_HOME="/Users/mykola/.volta"
 grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"

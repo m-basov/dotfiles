@@ -2,7 +2,7 @@ let g:mapleader = ","
 let g:my_nvim_dir = fnamemodify(expand('<sfile>'), ':p:h')
 let g:node_host_prog = '/Users/mbasov/.volta/tools/image/packages/neovim/4.5.0/bin/cli.js'
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:python_host_prog = '/usr/local/bin/python2'
+let g:python_host_prog = '/usr/bin/python2'
 
 execute 'silent source ' . expand(g:my_nvim_dir . '/dein.vim')
 
@@ -16,6 +16,7 @@ colorscheme alabaster
 syntax enable
 set noshowmode
 set noshowcmd
+set cc=
 
 " Essentials
 set guicursor=
@@ -126,8 +127,12 @@ let g:deoplete#enable_at_startup = 1
 
 " nnn 
 let g:nnn#set_default_mappings = 0
-let g:nnn#layout = { 'left': '~40%' }
+let g:nnn#layout = { 'left': '~30%' }
 let g:nnn#statusline = 1
+let g:nnn#replace_netrw = 1
+let g:nnn#action = {
+  \ 'l': 'NnnPicker'
+  \ }
 nnoremap <leader>e :NnnPicker '%:p:h'<CR>
 
 " Airline
@@ -160,7 +165,7 @@ let g:ale_fixers = {
   \ 'ruby': ['sorbet']
   \ }
 nmap <S-CR>     <Plug>(ale_fix)
-nmap gd         <Plug>(ale_go_to_definition_in_vsplit)
+nmap gd         <Plug>(ale_go_to_definition)
 nmap td         <Plug>(ale_go_to_type_definition)
 nmap tr         <Plug>(ale_find_references)
 nmap <leader>rn <Plug>(ale_rename)
@@ -189,3 +194,5 @@ if !exists('g:context_filetype#same_filetypes')
 endif
 let g:context_filetype#same_filetypes.typescript = 'javascript,typescript.tsx,typescriptreact'
 
+" Fugitive
+let g:fugitive_dynamic_colors = 0

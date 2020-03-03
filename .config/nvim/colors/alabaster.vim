@@ -91,6 +91,7 @@ hi! def link Type Normal
 hi! def link Special Normal
 hi! def link TermCursor Cursor
 hi! def link Title Definition
+hi! def link ColorColumn Normal
 
 "----------------------
 " JavaScript/TypeScript/CSS/GraphQL
@@ -185,3 +186,11 @@ let g:terminal_color_12 = s:alabaster_colors.bright_blue.gui
 let g:terminal_color_13 = s:alabaster_colors.bright_magenta.gui
 let g:terminal_color_14 = s:alabaster_colors.bright_cyan.gui
 let g:terminal_color_15 = s:alabaster_colors.bright_white.gui
+
+"----------------------
+" Git
+"----------------------
+hi! def link diffAdded String
+hi! def link diffRemoved Comment
+hi! def link DiffAdd diffAdded
+hi! def link DiffDelete diffRemoved

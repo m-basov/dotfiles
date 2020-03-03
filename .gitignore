@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/vim,sublimetext,ruby,rails,node,rust,go,osx
 
+### Kitty ###
+*.kitty-session.conf
+
 ### Vim ###
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]

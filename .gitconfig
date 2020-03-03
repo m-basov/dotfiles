@@ -17,7 +17,7 @@
 	user = kolybasov
 
 [core]
-	excludesfile = /Users/mbasov/.gitignore
+	excludesfile = /Users/mykola/.gitignore
 	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	quotepath = false
