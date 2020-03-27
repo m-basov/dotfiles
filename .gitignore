@@ -2,6 +2,7 @@
 
 ### Kitty ###
 *.kitty-session.conf
+.kitty/local.conf
 
 ### Vim ###
 [._]*.s[a-w][a-z]
