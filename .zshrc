@@ -51,7 +51,7 @@ alias g=git
 alias gf="git flow"
 alias kl=kubectl
 alias cur="printf '\x1b[?25h'"
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # BAT
 export BAT_THEME=OneHalfLight
@@ -65,5 +65,6 @@ compinit
 # export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # volta
-export VOLTA_HOME="/Users/mykola/.volta"
+export VOLTA_HOME="$HOME/.volta"
 grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
+

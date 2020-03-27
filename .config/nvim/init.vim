@@ -82,7 +82,7 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " Get syntax under cursor
 map <F10> :call GetSyntaxIdentifier()<CR>
 function GetSyntaxIdentifier()
-  echo 
+  echo
   \   "hi<"    . synIDattr(synID(line("."), col("."), 1), "name")              . "> "
   \ . "trans<" . synIDattr(synID(line("."), col("."), 0), "name")              . "> "
   \ . "lo<"    . synIDattr(synIDtrans(synID(line("."), col("."), 1)), "name") . ">"
@@ -102,6 +102,7 @@ endfunction
 
 " FZF
 let g:fzf_nvim_statusline = 0
+let g:fzf_preview_window = ''
 nmap <leader>p  :Files<CR>
 nmap <leader>/  :BLines<CR>
 nmap <leader>f  :Rg<CR>
@@ -125,7 +126,7 @@ let g:fzf_colors =  {
 set completeopt=menu
 let g:deoplete#enable_at_startup = 1
 
-" nnn 
+" nnn
 let g:nnn#set_default_mappings = 0
 let g:nnn#layout = { 'left': '~30%' }
 let g:nnn#statusline = 1
@@ -162,7 +163,8 @@ let g:ale_fixers = {
   \ 'rust': ['rustfmt'],
   \ 'c': ['clang-format'],
   \ 'cpp': ['clang-format'],
-  \ 'ruby': ['sorbet']
+  \ 'ruby': ['sorbet'],
+  \ 'markdown': ['prettier']
   \ }
 nmap <S-CR>     <Plug>(ale_fix)
 nmap gd         <Plug>(ale_go_to_definition)
@@ -196,3 +198,6 @@ let g:context_filetype#same_filetypes.typescript = 'javascript,typescript.tsx,ty
 
 " Fugitive
 let g:fugitive_dynamic_colors = 0
+
+" Colorizer
+nmap <leader>cC <Plug>Colorizer

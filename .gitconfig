@@ -17,13 +17,14 @@
 	user = kolybasov
 
 [core]
-	excludesfile = /Users/mykola/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	quotepath = false
 
 [diff]
 	tool = vimdiff
+	algorithm = histogram
 
 [merge]
 	tool = vim
@@ -56,3 +57,6 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[status]
+	short = true
+	branch = true

@@ -33,13 +33,13 @@ if dein#load_state(expand(s:dein_dir))
     call dein#add('Shougo/deoplete.nvim')
     call dein#add('dense-analysis/ale')
     call dein#add('sheerun/vim-polyglot')
-    call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+    call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
     call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
     call dein#add('tpope/vim-fugitive')
     call dein#add('mcchrish/nnn.vim')
+    call dein#add('chrisbra/Colorizer')
 
     " End of plugin initialization.
     call dein#end()
     call dein#save_state()
 endif
-

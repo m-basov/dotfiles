@@ -72,10 +72,8 @@ brew "nnn"
 brew "pgcli"
 brew "postgresql", restart_service: :changed
 brew "postgis"
-brew "python@2"
 brew "redis", restart_service: :changed
 brew "rename"
-brew "rfc"
 brew "ripgrep"
 brew "ruby", link: true
 brew "sdl2"
@@ -100,14 +98,13 @@ brew "stripe/stripe-cli/stripe"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "mas"
 brew "gcc"
+brew "tcc"
 
 # Casks
+cask "java"
 cask "osxfuse"
-cask "alacritty"
 cask "dbeaver-community"
 cask "iina"
-cask "java"
-cask "java8"
 cask "obs"
 cask "transmission"
 cask "virtualbox"
@@ -143,6 +140,7 @@ cask "apenngrace/vulkan/vulkan-sdk"
 cask "kitty"
 cask "font-cascadia"
 cask "font-cascadia-mono"
+cask "postman"
 
 # Mac AppStore
 mas "Things", id: 904280696
