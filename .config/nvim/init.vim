@@ -127,7 +127,7 @@ let g:deoplete#enable_at_startup = 1
 
 " nnn 
 let g:nnn#set_default_mappings = 0
-let g:nnn#layout = { 'left': '~30%' }
+let g:nnn#layout = { 'right': '~30%' }
 let g:nnn#statusline = 1
 let g:nnn#replace_netrw = 1
 let g:nnn#action = {
