@@ -61,10 +61,9 @@ autoload -U compinit
 compinit
 
 # gcloud
-# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 # export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # volta
-export VOLTA_HOME="$HOME/.volta"
-grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
-
+export VOLTA_HOME="/Users/mbasov/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

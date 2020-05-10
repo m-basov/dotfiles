@@ -127,13 +127,11 @@ set completeopt=menu
 let g:deoplete#enable_at_startup = 1
 
 " nnn
+let g:nnn#command = 'nnn -o -H -r -R'
 let g:nnn#set_default_mappings = 0
-let g:nnn#layout = { 'right': '~30%' }
+let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 let g:nnn#statusline = 1
 let g:nnn#replace_netrw = 1
-let g:nnn#action = {
-  \ 'l': 'NnnPicker'
-  \ }
 nnoremap <leader>e :NnnPicker '%:p:h'<CR>
 
 " Airline
@@ -146,8 +144,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:ale_set_signs = 0
 let g:ale_close_preview_on_insert = 1
 let g:ale_echo_cursor = 1
+let g:ale_rust_rustfmt_options = '--edition 2018'
 let g:ale_linters = {
-  \ 'rust': ['rls']
+  \ 'rust': ['rust-analyzer']
   \ }
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
