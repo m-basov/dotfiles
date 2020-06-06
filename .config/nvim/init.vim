@@ -1,8 +1,8 @@
 let g:mapleader = ","
 let g:my_nvim_dir = fnamemodify(expand('<sfile>'), ':p:h')
-let g:node_host_prog = '/Users/mbasov/.volta/tools/image/packages/neovim/4.5.0/bin/cli.js'
-let g:python3_host_prog = '/usr/local/bin/python3'
-let g:python_host_prog = '/usr/bin/python2'
+let g:node_host_prog = $HOME . '/.volta/tools/image/packages/neovim/4.9.0/bin/cli.js'
+let g:python3_host_prog = '/usr/bin/python3'
+"let g:python_host_prog = '/usr/bin/python2'
 
 execute 'silent source ' . expand(g:my_nvim_dir . '/dein.vim')
 
@@ -22,6 +22,7 @@ set cc=
 set guicursor=
 set updatetime=300
 set clipboard+=unnamed
+set clipboard+=unnamedplus
 set ttimeoutlen=10
 
 " Backups
@@ -162,7 +163,6 @@ let g:ale_fixers = {
   \ 'rust': ['rustfmt'],
   \ 'c': ['clang-format'],
   \ 'cpp': ['clang-format'],
-  \ 'ruby': ['sorbet'],
   \ 'markdown': ['prettier']
   \ }
 nmap <S-CR>     <Plug>(ale_fix)
@@ -200,3 +200,6 @@ let g:fugitive_dynamic_colors = 0
 
 " Colorizer
 nmap <leader>cC <Plug>Colorizer
+
+" Insert new uuid
+nmap <leader>u :r !uuidgen<CR>

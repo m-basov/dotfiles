@@ -1,5 +1,3 @@
-export LANG=en_US.UTF-8
-
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -23,19 +21,13 @@ eval "$(direnv hook zsh)"
 
 # prompt
 fpath+=$HOME/.zsh/pure
-export PURE_PROMPT_SYMBOL=""
+export PURE_PROMPT_SYMBOL="🐧"
 autoload -U promptinit; promptinit
 prompt pure
 
 # fzf
 export FZF_DEFAULT_COMMAND="rg --files --hidden --smart-case --glob '!.git/*'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# homebrew
-export PATH="/usr/local/sbin:$PATH"
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
 
 # source non-public stuff
 if [ -f ~/.non-public ]; then
@@ -61,9 +53,17 @@ autoload -U compinit
 compinit
 
 # gcloud
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-# export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+source ~/google-cloud-sdk/path.zsh.inc
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
 
 # volta
-export VOLTA_HOME="/Users/mbasov/.volta"
+export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
