@@ -1,7 +1,7 @@
 let g:mapleader = ","
 let g:my_nvim_dir = fnamemodify(expand('<sfile>'), ':p:h')
 let g:node_host_prog = $HOME . '/.volta/tools/image/packages/neovim/4.9.0/bin/cli.js'
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/bin/python3'
 "let g:python_host_prog = '/usr/bin/python2'
 
 execute 'silent source ' . expand(g:my_nvim_dir . '/dein.vim')

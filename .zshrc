@@ -3,7 +3,7 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # history
-export HISTFILE=~/.zhistory
+export HISTFILE="$HOME/.zhistory"
 export HISTSIZE=10000
 export SAVEHIST=10000
 setopt append_history
@@ -20,20 +20,20 @@ bindkey "^[[B" history-beginning-search-forward-end
 eval "$(direnv hook zsh)"
 
 # prompt
-fpath+=$HOME/.zsh/pure
+fpath+="$HOME/.zsh/pure"
 export PURE_PROMPT_SYMBOL="🐧"
 autoload -U promptinit; promptinit
 prompt pure
 
 # fzf
 export FZF_DEFAULT_COMMAND="rg --files --hidden --smart-case --glob '!.git/*'"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 # source non-public stuff
-if [ -f ~/.non-public ]; then
-    source ~/.non-public
+if [ -f "$HOME/.non-public" ]; then
+    source "$HOME/.non-public"
 else
-    print "~/.non-public not found."
+    print "$HOME/.non-public not found."
 fi
 
 # aliases
@@ -53,7 +53,8 @@ autoload -U compinit
 compinit
 
 # gcloud
-source ~/google-cloud-sdk/path.zsh.inc
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+export PATH="$HOME/google-cloud-sdk/bin:$PATH"
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
