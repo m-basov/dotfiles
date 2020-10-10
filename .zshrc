@@ -20,7 +20,7 @@ bindkey "^[[B" history-beginning-search-forward-end
 eval "$(direnv hook zsh)"
 
 # prompt
-fpath+="$HOME/.zsh/pure"
+fpath=("$HOME/.zsh/pure" $fpath)
 export PURE_PROMPT_SYMBOL="🐧"
 autoload -U promptinit; promptinit
 prompt pure
@@ -44,6 +44,10 @@ alias gf="git flow"
 alias kl=kubectl
 alias cur="printf '\x1b[?25h'"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ,e=nnn
+alias dcu="docker-compose up -d"
+alias dcd="docker-compose down"
+alias dcrm="docker-compose rm -s"
 
 # BAT
 export BAT_THEME=OneHalfLight
@@ -51,6 +55,7 @@ export BAT_THEME=OneHalfLight
 # completion
 autoload -U compinit
 compinit
+fpath=("$HOME/.zsh/completions" $fpath)
 
 # gcloud
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
@@ -63,9 +68,11 @@ eval "$(rbenv init -)"
 
 # cargo
 export PATH="$HOME/.cargo/bin:$PATH"
-
 export PATH="$HOME/.local/bin:$PATH"
 
 # volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# zoxide
+eval "$(zoxide init zsh)"

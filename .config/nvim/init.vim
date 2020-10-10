@@ -2,7 +2,8 @@ let g:mapleader = ","
 let g:my_nvim_dir = fnamemodify(expand('<sfile>'), ':p:h')
 let g:node_host_prog = $HOME . '/.volta/tools/image/packages/neovim/4.9.0/bin/cli.js'
 let g:python3_host_prog = '/bin/python3'
-"let g:python_host_prog = '/usr/bin/python2'
+let g:loaded_python_provider = 0
+let g:loaded_perl_provider = 0
 
 execute 'silent source ' . expand(g:my_nvim_dir . '/dein.vim')
 
@@ -38,7 +39,7 @@ set display+=lastline
 set tabstop=8
 set shiftwidth=2
 set expandtab
-set nowrap
+" set nowrap
 
 " Splits
 set splitbelow
@@ -102,9 +103,10 @@ function CleanDeinPlugins() abort
 endfunction
 
 " FZF
-let g:fzf_nvim_statusline = 0
-let g:fzf_preview_window = ''
+" let g:fzf_nvim_statusline = 0
+" let g:fzf_preview_window = ''
 nmap <leader>p  :Files<CR>
+nmap <leader>b  :Buffers<CR>
 nmap <leader>/  :BLines<CR>
 nmap <leader>f  :Rg<CR>
 let g:fzf_colors =  {
@@ -126,6 +128,18 @@ let g:fzf_colors =  {
 " Deoplete
 set completeopt=menu
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('sources', {
+\ '_': ['ale', 'buffer', 'file'],
+\ 'rust': ['lsp', 'ale', 'buffer', 'file'],
+\ 'typescript': ['lsp', 'ale', 'buffer', 'file'],
+\ })
+call deoplete#custom#option('min_pattern_length', 1)
+call deoplete#custom#option('max_pattern_length', 120)
+
+" Lua plugins
+let g:diagnostic_show_sign = 0
+let g:diagnostic_enable_underline = 0
+lua require('init')
 
 " nnn
 let g:nnn#command = 'nnn -o -H -r -R'
@@ -133,21 +147,31 @@ let g:nnn#set_default_mappings = 0
 let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
 let g:nnn#statusline = 1
 let g:nnn#replace_netrw = 1
-nnoremap <leader>e :NnnPicker '%:p:h'<CR>
+nnoremap <leader>e :NnnPicker %:p:h<CR>
 
 " Airline
-let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#enabled = 0
 let g:airline_theme = 'alabaster'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#nvimlsp#enabled = 0
+let g:airline_section_warning = airline#section#create_right(['lsp_status'])
+function! LspStatus() abort
+  let status = luaeval('require("lsp-status").status()')
+  return trim(status)
+endfunction
+call airline#parts#define_function('lsp_status', 'LspStatus')
+call airline#parts#define_condition('lsp_status', 'luaeval("#vim.lsp.buf_get_clients() > 0")')
 
 " ALE
+let g:ale_disable_lsp = 1
 let g:ale_set_signs = 0
-let g:ale_close_preview_on_insert = 1
-let g:ale_echo_cursor = 1
+let g:ale_echo_cursor = 0
 let g:ale_rust_rustfmt_options = '--edition 2018'
 let g:ale_linters = {
-  \ 'rust': ['rust-analyzer']
+  \ 'rust': [],
+  \ 'typescript': ['eslint'],
+  \ 'javascript': ['eslint']
   \ }
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -163,37 +187,33 @@ let g:ale_fixers = {
   \ 'rust': ['rustfmt'],
   \ 'c': ['clang-format'],
   \ 'cpp': ['clang-format'],
-  \ 'markdown': ['prettier']
+  \ 'markdown': ['prettier'],
+  \ 'ruby': ['rubocop'],
   \ }
 nmap <S-CR>     <Plug>(ale_fix)
-nmap gd         <Plug>(ale_go_to_definition)
-nmap td         <Plug>(ale_go_to_type_definition)
-nmap tr         <Plug>(ale_find_references)
-nmap <leader>rn <Plug>(ale_rename)
-nmap K          <Plug>(ale_hover)
-nmap <leader>n  <Plug>(ale_next_wrap)
-nmap <leader>N  <Plug>(ale_previous_wrap)
-" ale-rust
-let g:ale_rust_cargo_use_clippy = 1
+
+" nmap gd         <Plug>(ale_go_to_definition)
+" nmap td         <Plug>(ale_go_to_type_definition)
+" nmap tr         <Plug>(ale_find_references)
+" nmap <leader>rn <Plug>(ale_rename)
+" nmap K          <Plug>(ale_hover)
+" nmap <leader>n  <Plug>(ale_next_wrap)
+" nmap <leader>N  <Plug>(ale_previous_wrap)
+
+nmap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nmap <silent> td <cmd>lua vim.lsp.buf.type_definition()<CR>
+nmap <silent> tr <cmd>lua vim.lsp.buf.references()<CR>
+nmap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
+nmap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nmap <leader>n <cmd>NextDiagnosticCycle<CR>
+nmap <leader>N <cmd>PrevDiagnosticCycle<CR>
+nmap <leader>D <cmd>OpenDiagnostic<CR>
 
 " Syntax
 augroup init_syntaxes
   au!
   au BufNewFile,BufRead *.mjml set filetype=html
 augroup END
-
-if !exists('g:context_filetype#filetypes')
-  let g:context_filetype#filetypes = {}
-endif
-let g:context_filetype#filetypes.typescript = [
-  \ {'filetype': 'sql', 'start' : 'sql\`', 'end' : '\`'},
-  \ {'filetype': 'html', 'start': 'html\`', 'end': '\`'},
-  \ {'filetype': 'css', 'start': 'css\`', 'end': '\`'}
-  \ ]
-if !exists('g:context_filetype#same_filetypes')
-  let g:context_filetype#same_filetypes = {}
-endif
-let g:context_filetype#same_filetypes.typescript = 'javascript,typescript.tsx,typescriptreact'
 
 " Fugitive
 let g:fugitive_dynamic_colors = 0

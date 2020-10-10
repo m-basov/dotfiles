@@ -111,6 +111,7 @@ hi! def link typescriptTypeParameter Definition
 hi! def link typescriptSpecial Escape
 hi! def link typescriptPredefinedType Definition
 hi! def link typescriptFuncName Definition
+hi! def link typescriptMember Definition
 
 hi! def link jsxComponentName Definition
 hi! def link jsxOpenPunct Escape
@@ -166,6 +167,9 @@ hi! def link ALEWarningSign Warning
 hi! def link ALEWarning Warning
 hi! def link ALEErrorSign Error
 hi! def link ALEError Error
+
+hi! def link LspDiagnosticsWarning Warning
+hi! def link LspDiagnosticsError Error
 
 "----------------------
 " Terminal
