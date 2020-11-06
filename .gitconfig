@@ -1,7 +1,7 @@
 [user]
 	name = Mykola Basov
 	email = git@mbasov.com
-	username = kolybasov
+	username = m-basov
 	signingkey = 5752C362EA9CDBBD
 
 [push]
@@ -14,11 +14,11 @@
 	process = git-lfs filter-process
 
 [github]
-	user = kolybasov
+	user = m-basov
 
 [core]
 	excludesfile = ~/.gitignore
-	editor = vim
+	editor = subl -nw
 	pager = delta --theme='ansi-light'
 	quotepath = false
 

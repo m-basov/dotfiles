@@ -38,9 +38,7 @@ fi
 
 # aliases
 alias ls=exa
-alias vim=nvim
 alias g=git
-alias gf="git flow"
 alias kl=kubectl
 alias cur="printf '\x1b[?25h'"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
