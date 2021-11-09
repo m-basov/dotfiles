@@ -29,6 +29,19 @@
 	tool = vimdiff
 	algorithm = histogram
 
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+[interactive]
+	difffilter = delta --color-only
+
+[delta]
+	features = side-by-side line-numbers decorations
+	whitespace-error-style = 22 reverse
+
 [merge]
 	tool = vim
 
@@ -53,3 +66,4 @@
 	branch = true
 [pull]
 	rebase = false
+	ff = only

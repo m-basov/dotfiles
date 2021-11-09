@@ -1,7 +1,7 @@
 let g:mapleader = ","
 let g:my_nvim_dir = fnamemodify(expand('<sfile>'), ':p:h')
-let g:node_host_prog = $HOME . '/.volta/tools/image/packages/neovim/4.9.0/bin/cli.js'
-let g:python3_host_prog = '/bin/python3'
+let g:node_host_prog = '/Users/mbasov/.volta/tools/image/packages/neovim/lib/node_modules/neovim/bin/cli.js'
+let g:python3_host_prog = '/usr/local/bin/python3'
 let g:loaded_python_provider = 0
 let g:loaded_perl_provider = 0
 

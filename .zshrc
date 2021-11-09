@@ -16,14 +16,14 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
 
+# zoxide
+eval "$(zoxide init zsh)"
+
 # direnv
 eval "$(direnv hook zsh)"
 
 # prompt
-fpath=("$HOME/.zsh/pure" $fpath)
-export PURE_PROMPT_SYMBOL="🐧"
-autoload -U promptinit; promptinit
-prompt pure
+eval "$(starship init zsh)"
 
 # fzf
 export FZF_DEFAULT_COMMAND="rg --files --hidden --smart-case --glob '!.git/*'"
@@ -55,18 +55,13 @@ autoload -U compinit
 compinit
 fpath=("$HOME/.zsh/completions" $fpath)
 
-# gcloud
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
-export PATH="$HOME/google-cloud-sdk/bin:$PATH"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 # cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+# go
+export GOPATH="${HOME}/.golang"
+export PATH="${PATH}:${GOPATH}/bin"
 
 # volta
 export VOLTA_HOME="$HOME/.volta"
