@@ -38,7 +38,6 @@
           pkgs.fd
           pkgs.lazygit
           pkgs.ast-grep
-          pkgs.gitui
         ];
 
       programs.zsh = {
