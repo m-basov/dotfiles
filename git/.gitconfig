@@ -1,0 +1,71 @@
+[user]
+	name = Mykola Basov
+	email = git@mbasov.com
+	username = m-basov
+	signingkey = 5752C362EA9CDBBD
+
+[push]
+	default = simple
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
+
+[github]
+	user = m-basov
+
+[core]
+	excludesfile = ~/.gitignore
+	editor = subl -nw
+	pager = delta --theme='ansi-light'
+	quotepath = false
+
+[interactive]
+	diffFilter = delta --color-only
+
+[diff]
+	tool = vimdiff
+	algorithm = histogram
+
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+[interactive]
+	difffilter = delta --color-only
+
+[delta]
+	features = side-by-side line-numbers decorations
+	whitespace-error-style = 22 reverse
+
+[merge]
+	tool = nvim
+
+[alias]
+	pl = pull
+	p = push
+	st = status
+	co = checkout
+	cm = commit -am
+	a = add
+	br = checkout -b
+	m = merge
+	c = clone
+	d = diff
+	slap = log --oneline --decorate --graph --all
+
+[color]
+	ui = true
+
+[status]
+	short = true
+	branch = true
+[pull]
+	rebase = false
+	ff = only
+[init]
+	defaultBranch = main
