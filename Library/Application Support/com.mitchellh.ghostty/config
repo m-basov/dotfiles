@@ -1,21 +1,11 @@
 # This is the configuration file for Ghostty.
 #
-# This template file has been automatically created at the following
-# path since Ghostty couldn't find any existing config files on your system:
-#
-#   /Users/mbasov/Library/Application Support/com.mitchellh.ghostty/config
-#
-# The template does not set any default options, since Ghostty ships
-# with sensible defaults for all options. Users should only need to set
-# options that they want to change from the default.
-#
 # Run `ghostty +show-config --default --docs` to view a list of
 # all available config options and their default values.
-#
-# Additionally, each config option is also explained in detail
-# on Ghostty's website, at https://ghostty.org/docs/config.
 
 shell-integration = zsh
+
+theme = moonfly
 
 font-family = Inconsolata Nerd Font Mono
 font-size = 17
@@ -23,14 +13,12 @@ font-feature = -calt, -liga, -dlig
 font-style-italic = false
 font-style-bold-italic = false
 
-theme = catppuccin-mocha
-
 mouse-hide-while-typing = true
 scrollback-limit = 1000000
-quick-terminal-animation-duration = 0
 window-save-state = always
+window-height = 10000
+window-width = 10000
 
-keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = super+r=reload_config
 
 keybind = unconsumed:ctrl+h=goto_split:left

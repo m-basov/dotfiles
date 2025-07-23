@@ -30,7 +30,7 @@
           pkgs.fzf
           pkgs.oh-my-posh
           pkgs.git
-          pkgs.volta
+          pkgs.nodejs_24
           pkgs.inconsolata
           pkgs.nerd-fonts.inconsolata
           pkgs.zinit
@@ -38,6 +38,13 @@
           pkgs.fd
           pkgs.lazygit
           pkgs.ast-grep
+          # nvim
+          pkgs.lua-language-server
+          pkgs.stylua
+          pkgs.typescript
+          pkgs.vtsls
+          pkgs.eslint_d
+          pkgs.prettierd
         ];
 
       programs.zsh = {
@@ -53,8 +60,6 @@
         '';
         variables = {
           EDITOR = "nvim";
-          VOLTA_HOME = "$HOME/.volta";
-          PATH = "$VOLTA_HOME/bin:$PATH";
         };
       };
 
