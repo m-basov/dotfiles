@@ -5,9 +5,7 @@ vim.g.lazydev_enabled = vim.env.DEV == "1"
 
 local opt = vim.opt
 
-vim.schedule(function()
-  opt.clipboard = "unnamedplus"
-end)
+vim.schedule(function() opt.clipboard = "unnamedplus" end)
 
 opt.updatetime = 250
 opt.timeoutlen = 300
@@ -37,7 +35,7 @@ opt.hlsearch = true
 opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.inccommand = 'nosplit'
+opt.inccommand = "nosplit"
 
 opt.number = true
 opt.relativenumber = true

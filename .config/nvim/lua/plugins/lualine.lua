@@ -4,6 +4,15 @@ return {
   opts = {
     theme = "moonfly",
     icons_enable = true,
-    extensions = { "trouble" },
+    sections = {
+      lualine_b = {
+        { "branch" },
+        { "diff", symbols = { added = " ", modified = " ", removed = " " } },
+        { "diagnostics", sections = { "error", "warn", "info" } },
+      },
+      lualine_c = {
+        { "filename", path = 1 },
+      },
+    },
   },
 }
