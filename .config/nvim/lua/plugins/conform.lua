@@ -8,6 +8,8 @@ return {
       lua = { "stylua" },
       javascript = { "prettierd" },
       typescript = { "prettierd" },
+      json = { "prettierd" },
+      jsonc = { "prettierd" },
     },
     format_on_save = {
       timeout_ms = 500,

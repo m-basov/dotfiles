@@ -6,6 +6,7 @@ return {
     auto_close = true,
     warn_no_results = false,
     open_no_results = true,
+    auto_preview = false,
     modes = {
       diagnostics = {
         filter = {

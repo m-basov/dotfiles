@@ -19,6 +19,27 @@ return {
       underline = false,
       virtual_lines = false,
     })
+
+    vim.lsp.config("vtsls", {
+      settings = {
+        typescript = {
+          tsserver = {
+            -- Search for plugins in local node_modules
+            pluginPaths = { "./node_modules" },
+          },
+        },
+        vtsls = {
+          autoUseWorkspaceTsdk = true,
+          experimental = {
+            completion = {
+              enableServerSideFuzzyMatch = true,
+              entriesLimit = 100,
+            },
+          },
+        },
+      },
+    })
+
     vim.lsp.enable({ "lua_ls", "vtsls" })
   end,
 }
