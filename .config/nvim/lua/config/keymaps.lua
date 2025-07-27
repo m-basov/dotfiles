@@ -13,3 +13,6 @@ map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Search
 map("n", "<Esc>", "<cmd>nohlsearch<cr>")
+
+-- LSP
+map("n", "grd", function() vim.lsp.buf.definition() end, { desc = "LSP Definition" })

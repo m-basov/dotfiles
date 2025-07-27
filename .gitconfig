@@ -13,7 +13,6 @@
 [diff]
 	tool = nvim -d
 	algorithm = histogram
-
 [merge]
 	tool = nvim -d
 [alias]

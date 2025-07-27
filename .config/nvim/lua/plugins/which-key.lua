@@ -14,6 +14,12 @@ return {
       { "<leader>g", group = "Git" },
       { "<leader>x", group = "Diagonostics" },
       { "gr", group = "LSP" },
+      { "grr", desc = "LSP References" },
+      { "grn", desc = "LSP Rename" },
+      { "gra", desc = "LSP Code Actions" },
+      { "gri", desc = "LSP Implementations" },
+      { "grt", desc = "LSP Type Definitions" },
+      { "gO", desc = "LSP Document Symbols" },
     },
   },
 }
