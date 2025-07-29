@@ -30,6 +30,7 @@ return {
     -- Buffers
     { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+    { "<leader>bD", function() Snacks.bufdelete.all() end, desc = "Delete Buffer" },
     -- Grep
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
     -- Picker
