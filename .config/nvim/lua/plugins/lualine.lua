@@ -13,6 +13,9 @@ return {
       lualine_c = {
         { "filename", path = 1 },
       },
+      lualine_y = {
+        { "lsp_status" },
+      },
     },
   },
 }

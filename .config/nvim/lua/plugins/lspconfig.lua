@@ -40,6 +40,6 @@ return {
       },
     })
 
-    vim.lsp.enable({ "lua_ls", "vtsls" })
+    vim.lsp.enable({ "lua_ls", "vtsls", "eslint" })
   end,
 }

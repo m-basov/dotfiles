@@ -43,8 +43,7 @@
           pkgs.stylua
           pkgs.typescript
           pkgs.vtsls
-          pkgs.eslint_d
-          pkgs.prettierd
+          pkgs.vscode-langservers-extracted
         ];
 
       programs.zsh = {

@@ -7,17 +7,19 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
 
-      javascript = { "eslint_d", "prettierd" },
-      javascriptreact = { "eslint_d", "prettierd" },
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
 
-      typescript = { "eslint_d", "prettierd" },
-      typescriptreact = { "eslint_d", "prettierd" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
 
-      json = { "prettierd" },
-      jsonc = { "prettierd" },
+      json = { "prettier" },
+      jsonc = { "prettier" },
+
+      markdown = { "prettier" },
     },
     format_on_save = {
-      timeout_ms = 5000,
+      timeout_ms = 500,
       lsp_format = "fallback",
     },
   },
