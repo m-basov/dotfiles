@@ -17,7 +17,7 @@ return {
   },
   keys = {
     -- Explorer
-    { "<leader>e", function() Snacks.explorer() end, desc = "Explorer" },
+    { "<leader>e", function() Snacks.explorer({ diagnostics = false, git_status = false }) end, desc = "Explorer" },
     -- Files
     { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files" },
