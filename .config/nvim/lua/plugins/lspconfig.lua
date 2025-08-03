@@ -12,12 +12,12 @@ return {
           [vim.diagnostic.severity.INFO] = "󰋽 ",
         },
       },
-      virtual_text = false,
-      underline = false,
-      virtual_lines = {
+      virtual_text = {
         severity = { min = vim.diagnostic.severity.ERROR },
         current_line = true,
       },
+      underline = false,
+      virtual_lines = false,
     })
 
     vim.lsp.config("vtsls", {
