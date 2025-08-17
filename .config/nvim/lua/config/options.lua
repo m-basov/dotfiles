@@ -1,8 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-vim.g.lazydev_enabled = vim.env.DEV == "1"
-
 local opt = vim.opt
 
 vim.schedule(function() opt.clipboard = "unnamedplus" end)
