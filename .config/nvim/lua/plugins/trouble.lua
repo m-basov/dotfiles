@@ -24,9 +24,9 @@ return {
     { "grr", "<cmd>Trouble lsp_references<CR>", desc = "LSP References" },
     { "gri", "<cmd>Trouble lsp_implementations<CR>", desc = "LSP Implementations" },
     { "grd", "<cmd>Trouble lsp_definitions auto_jump=true<CR>", desc = "LSP Definitions" },
-    { "grt", "<cmd>Trouble lsp_type_definitions auto_jump=true<CR>", desc = "LSP Type Definitions" },
-    { "gO", "<cmd>Trouble lsp_document_symbols<CR>", desc = "LSP Document Symbols" },
+    { "grD", "<cmd>Trouble lsp_type_definitions auto_jump=true<CR>", desc = "LSP Type Definitions" },
     { "grc", "<cmd>Trouble lsp_incoming_calls<CR>", desc = "LSP Incoming Calls" },
     { "grC", "<cmd>Trouble lsp_outgoing_calls<CR>", desc = "LSP Outgoing Calls" },
+    { "gO", "<cmd>Trouble lsp_document_symbols<CR>", desc = "LSP Document Symbols" },
   },
 }
