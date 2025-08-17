@@ -5,16 +5,19 @@ return {
     theme = "moonfly",
     icons_enable = true,
     sections = {
-      lualine_b = {
-        { "branch" },
-        { "diff", symbols = { added = " ", modified = " ", removed = " " } },
-        { "diagnostics", sections = { "error", "warn", "info" } },
-      },
+      lualine_b = {},
       lualine_c = {
         { "filename", path = 1 },
       },
-      lualine_y = {
+      lualine_x = {
         { "lsp_status" },
+      },
+      lualine_y = {
+        { "diagnostics", sections = { "error", "warn", "info" } },
+        { "diff", symbols = { added = " ", modified = " ", removed = " " } },
+      },
+      lualine_z = {
+        { "branch" },
       },
     },
   },
