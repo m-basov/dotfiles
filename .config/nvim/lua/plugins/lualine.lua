@@ -13,8 +13,8 @@ return {
         { "lsp_status" },
       },
       lualine_y = {
-        { "diagnostics", sections = { "error", "warn", "info" } },
-        { "diff", symbols = { added = " ", modified = " ", removed = " " } },
+        { "diagnostics", sections = { "error", "warn" } },
+        { "diff", symbols = { added = "󰐕 ", modified = "󰍴 ", removed = "󰜥 " } },
       },
       lualine_z = {
         { "branch" },
