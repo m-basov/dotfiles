@@ -77,8 +77,8 @@
           "alfred"
           "ghostty"
           "orcaslicer"
-          "sublime-text"
           "vlc"
+          "proton-pass"
         ];
         masApps = {
           "Magnet" = 441258766;
