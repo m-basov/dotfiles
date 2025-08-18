@@ -22,6 +22,7 @@ opt.fillchars = {
   vertleft = "┫",
   vertright = "┣",
   verthoriz = "╋",
+  diff = "╱",
 }
 
 opt.ignorecase = true
