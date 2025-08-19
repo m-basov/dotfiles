@@ -17,7 +17,7 @@ return {
   },
   keys = {
     { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
-    { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
-    { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
+    { "<leader>gb", "<cmd>Neogit branch<cr>", desc = "Branch" },
+    { "<leader>gw", "<cmd>Neogit worktree<cr>", desc = "Work Tree" },
   },
 }
