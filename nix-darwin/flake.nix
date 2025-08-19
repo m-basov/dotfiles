@@ -36,7 +36,6 @@
           pkgs.zinit
           pkgs.ripgrep
           pkgs.fd
-          pkgs.lazygit
           pkgs.ast-grep
           # nvim
           pkgs.lua-language-server
