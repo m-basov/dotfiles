@@ -12,7 +12,6 @@ return {
     input = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
-    scroll = { enabled = true, animate = { duration = { total = 100 } } },
   },
   keys = {
     -- Explorer

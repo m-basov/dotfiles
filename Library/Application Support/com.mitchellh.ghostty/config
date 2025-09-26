@@ -7,7 +7,7 @@ shell-integration = zsh
 
 theme = moonfly
 
-font-family = Inconsolata Nerd Font Mono
+font-family = Inconsolata
 font-size = 17
 font-feature = -calt, -liga, -dlig
 font-style-italic = false
@@ -19,19 +19,8 @@ window-save-state = always
 window-height = 10000
 window-width = 10000
 
-keybind = super+r=reload_config
-
-keybind = unconsumed:ctrl+h=goto_split:left
-keybind = unconsumed:ctrl+j=goto_split:bottom
-keybind = unconsumed:ctrl+k=goto_split:top
-keybind = unconsumed:ctrl+l=goto_split:right
-
-keybind = ctrl+a>h=new_split:left
-keybind = ctrl+a>j=new_split:down
-keybind = ctrl+a>k=new_split:up
-keybind = ctrl+a>l=new_split:right
-keybind = ctrl+a>f=toggle_split_zoom
-
-keybind = ctrl+a>n=next_tab
-keybind = ctrl+a>p=previous_tab
+keybind = performable:ctrl+h=goto_split:left
+keybind = performable:ctrl+j=goto_split:bottom
+keybind = performable:ctrl+k=goto_split:top
+keybind = performable:ctrl+l=goto_split:right
 
