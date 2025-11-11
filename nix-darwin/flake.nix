@@ -32,7 +32,6 @@
           pkgs.git
           pkgs.nodejs_24
           pkgs.inconsolata
-          pkgs.nerd-fonts.inconsolata
           pkgs.zinit
           pkgs.ripgrep
           pkgs.fd
@@ -63,7 +62,6 @@
 
       fonts.packages = [
         pkgs.inconsolata
-        pkgs.nerd-fonts.inconsolata
       ];
 
       homebrew = {
@@ -72,12 +70,16 @@
           "mas"
         ];
         casks = [
-          "1password"
           "alfred"
           "ghostty"
           "orcaslicer"
           "vlc"
           "proton-pass"
+          "proton-drive"
+          "proton-mail-bridge"
+          "discord"
+          "signal"
+          "tidal"
         ];
         masApps = {
           "Magnet" = 441258766;
