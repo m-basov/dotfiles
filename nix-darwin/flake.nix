@@ -25,23 +25,23 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
-        [ pkgs.neovim
-          pkgs.stow
-          pkgs.fzf
-          pkgs.oh-my-posh
-          pkgs.git
-          pkgs.nodejs_24
-          pkgs.inconsolata
-          pkgs.zinit
-          pkgs.ripgrep
+        [ pkgs.ast-grep
           pkgs.fd
-          pkgs.ast-grep
+          pkgs.fzf
+          pkgs.git
+          pkgs.inconsolata
+          pkgs.nodejs_24
+          pkgs.oh-my-posh
+          pkgs.ripgrep
+          pkgs.stow
+          pkgs.zinit
           # nvim
+          pkgs.neovim
           pkgs.lua-language-server
           pkgs.stylua
           pkgs.typescript
-          pkgs.vtsls
           pkgs.vscode-langservers-extracted
+          pkgs.vtsls
         ];
 
       programs.zsh = {
@@ -71,15 +71,16 @@
         ];
         casks = [
           "alfred"
+          "brave-browser"
+          "discord"
           "ghostty"
           "orcaslicer"
-          "vlc"
-          "proton-pass"
           "proton-drive"
           "proton-mail-bridge"
-          "discord"
+          "proton-pass"
           "signal"
           "tidal"
+          "vlc"
         ];
         masApps = {
           "Magnet" = 441258766;
