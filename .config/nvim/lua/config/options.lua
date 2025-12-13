@@ -5,13 +5,15 @@ local opt = vim.opt
 
 vim.schedule(function() opt.clipboard = "unnamedplus" end)
 
-opt.list = true
 opt.updatetime = 250
 
 opt.scrolloff = 10
 
 opt.showmode = false
 opt.confirm = true
+
+opt.list = true
+opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 opt.winborder = "rounded"
 opt.fillchars = {
@@ -34,6 +36,7 @@ opt.signcolumn = "yes"
 
 opt.expandtab = true
 opt.shiftwidth = 4
+opt.tabstop = 4
 
 opt.splitbelow = true
 opt.splitright = true

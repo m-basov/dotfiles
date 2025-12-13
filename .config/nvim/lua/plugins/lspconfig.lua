@@ -40,6 +40,14 @@ return {
       },
     })
 
-    vim.lsp.enable({ "lua_ls", "vtsls", "eslint" })
+    vim.lsp.enable({
+      -- Lua
+      "lua_ls",
+      -- JavaScript
+      "vtsls",
+      "eslint",
+      -- Go
+      "gopls",
+    })
   end,
 }

@@ -30,18 +30,25 @@
           pkgs.fzf
           pkgs.git
           pkgs.inconsolata
-          pkgs.nodejs_24
           pkgs.oh-my-posh
           pkgs.ripgrep
           pkgs.stow
           pkgs.zinit
+          # javascript
+          pkgs.nodejs_24
+          pkgs.typescript
+          pkgs.vscode-langservers-extracted
+          pkgs.vtsls
+          # go
+          pkgs.go
+          pkgs.gopls
+          # rust
+          pkgs.rustc
+          pkgs.cargo
           # nvim
           pkgs.neovim
           pkgs.lua-language-server
           pkgs.stylua
-          pkgs.typescript
-          pkgs.vscode-langservers-extracted
-          pkgs.vtsls
         ];
 
       programs.zsh = {
@@ -79,11 +86,10 @@
           "proton-mail-bridge"
           "proton-pass"
           "signal"
-          "tidal"
+          "qobuz"
           "vlc"
         ];
         masApps = {
-          "Magnet" = 441258766;
         };
       };
     };
