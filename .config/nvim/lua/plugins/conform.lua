@@ -19,6 +19,10 @@ return {
       markdown = { "prettier" },
 
       go = { "gofmt" },
+
+      rust = { "rustfmt" },
+
+      zig = { "zig fmt" },
     },
     format_on_save = {
       timeout_ms = 500,

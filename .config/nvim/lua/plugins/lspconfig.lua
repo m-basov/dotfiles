@@ -48,6 +48,10 @@ return {
       "eslint",
       -- Go
       "gopls",
+      -- Rust
+      "rust_analyzer",
+      -- Zig
+      "zls",
     })
   end,
 }

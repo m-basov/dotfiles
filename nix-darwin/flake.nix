@@ -26,6 +26,7 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ pkgs.ast-grep
+          pkgs.direnv
           pkgs.fd
           pkgs.fzf
           pkgs.git
@@ -34,6 +35,17 @@
           pkgs.ripgrep
           pkgs.stow
           pkgs.zinit
+          # go
+          pkgs.go
+          pkgs.gopls
+          # rust
+          pkgs.rustc
+          pkgs.rustfmt
+          pkgs.cargo
+          pkgs.rust-analyzer
+          # zig
+          pkgs.zig
+          pkgs.zls
           # nvim
           pkgs.neovim
           pkgs.lua-language-server
@@ -50,6 +62,7 @@
           eval "$(/opt/homebrew/bin/brew shellenv)"
           eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
           eval "$(fzf --zsh)"
+          eval "$(direnv hook zsh)"
         '';
         variables = {
           EDITOR = "nvim";
