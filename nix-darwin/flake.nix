@@ -34,17 +34,6 @@
           pkgs.ripgrep
           pkgs.stow
           pkgs.zinit
-          # javascript
-          pkgs.nodejs_24
-          pkgs.typescript
-          pkgs.vscode-langservers-extracted
-          pkgs.vtsls
-          # go
-          pkgs.go
-          pkgs.gopls
-          # rust
-          pkgs.rustc
-          pkgs.cargo
           # nvim
           pkgs.neovim
           pkgs.lua-language-server
@@ -78,7 +67,7 @@
         ];
         casks = [
           "alfred"
-          "brave-browser"
+          "ungoogled-chromium"
           "discord"
           "ghostty"
           "orcaslicer"
@@ -90,6 +79,9 @@
           "vlc"
         ];
         masApps = {
+          "Proton Pass for Safari" = 6502835663;
+          "uBlock Origin Lite" = 6745342698;
+          "Xcode" = 497799835;
         };
       };
     };
