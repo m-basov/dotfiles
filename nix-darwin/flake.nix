@@ -83,6 +83,7 @@
           "ungoogled-chromium"
           "discord"
           "ghostty"
+          "obsidian"
           "orcaslicer"
           "proton-drive"
           "proton-mail-bridge"

@@ -8,7 +8,7 @@ shell-integration = zsh
 theme = moonfly
 
 font-family = Inconsolata
-font-size = 17
+font-size = 18
 font-feature = -calt, -liga, -dlig
 font-style-italic = false
 font-style-bold-italic = false
